@@ -1,0 +1,1 @@
+This is the printf group project by Oluwaseyi and Joshua Nnatus, students of the ALX Software Engineering Programme, in which a function called "_printf" imitates the genuine "printf" command found in the stdio.h library. It includes some of the fundamental capabilities and operations listed in "printf's" handbook 3.
