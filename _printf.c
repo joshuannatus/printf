@@ -1,49 +1,48 @@
 #include "main.h"
-
 /**
- * _printf - prints output according to a format
- * @format: character string containing zero or more directives
- *
- * Return: the number of characters printed.
+ * _printf - recreates the printf function
+ * @format: string with format specifier
+ * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int printed = 0;
-
-	va_start(args, format);
-
-	while (*format)
+	if (format != NULL)
 	{
-		if (*format == '%')
-		{
-			format++;
+		int count = 0, i;
+		int (*m)(va_list);
+		va_list args;
 
-			switch (*format)
+		va_start(args, format);
+		i = 0;
+		if (format[0] == '%' && format[1] == '\0')
+			return (-1);
+		while (format != NULL && format[i] != '\0')
+		{
+			if (format[i] == '%')
 			{
-				case 'c':
-					printed += putchar(va_arg(args, int));
-					break;
-				case 's':
-					printed += printf("%s", va_arg(args, char *));
-					break;
-				case '%':
-					printed += putchar('%');
-					break;
-				default:
-					printed += putchar('%');
-					printed += putchar(*format);
-					break;
+				if (format[i + 1] == '%')
+				{
+					count += _putchar(format[i]);
+					i += 2;
+				}
+				else
+				{
+					m = get_func(format[i + 1]);
+					if (m)
+						count += m(args);
+					else
+						count = _putchar(format[i]) + _putchar(format[i + 1]);
+					i += 2;
+				}
+			}
+			else
+			{
+				count += _putchar(format[i]);
+				i++;
 			}
 		}
-		else
-		{
-			printed += putchar(*format);
-		}
-
-		format++;
+		va_end(args);
+		return (count);
 	}
-	va_end(args);
-	return (printed);
+	return (-1);
 }
-
