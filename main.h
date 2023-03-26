@@ -27,4 +27,6 @@ int print_s(va_list args);
 int print_percent(va_list args);
 int print_d(va_list args);
 int print_i(va_list args);
+int print_hexa_lower(va_list ap);
+int print_binary(va_list pp);
 #endif
