@@ -24,12 +24,9 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					*s = va_arg(args, char*);
-					while (*s)
-					{
 						putchar(*s);
 						s++;
 						count++;
-					}
 					break;
 				case '%':
 					putchar('%');
@@ -39,9 +36,11 @@ int _printf(const char *format, ...)
 					break;
 			}
 		else
+		{
 			putchar(*format);
 			count++;
-			format++;
+		}
+		format++;
 	}
 	va_end(args);
 	return (count);
