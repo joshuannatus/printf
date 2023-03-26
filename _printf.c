@@ -24,10 +24,12 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				case 's':
-					s = va_arg(args, char*);
+					{
+						s = va_arg(args, char*);
 						putchar(*s);
 						s++;
 						count++;
+					}
 					break;
 				case '%':
 					putchar('%');
