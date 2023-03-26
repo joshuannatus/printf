@@ -100,30 +100,37 @@ int print_i(va_list args)
 
 /**
  * print_binary - print binary.
- * @pp - argument.
+ * @arg - argument.
  *
  * Return: numbers of value
  */
-int print_binary(va_list pp)
+int print_binary(va_list arg)
 {
-        unsigned int l;
-        int m, n;
-        int arr [100];
+	unsigned int i, j, n, count = 0;
+	unsigned int arr[100];
 
-        l = va_arg(pp, int);
-        m = 0;
-        if (l == 0)
-        {
-                _putchar('0');
-                return (1);
-        }
-        while (l > 0)
-        {
-                arr[m] = l % 2;
-                l = l / 2;
-                m++;
-        }
-        for (n = m - 1; n >= 0; n--)
-                _putchar(arr[n] + '0');
-        return (0);
+	n = va_arg(arg, int);
+
+	if (n < 1)
+	{
+		_putchar('0');
+		return (1);
+	}
+	else
+	{
+		for (i = 0; n > 0; i++)
+		{
+			arr[i] = n % 2;
+			n /= 2;
+		}
+		arr[i] = n % 2;
+		for (j = i - 1; j > 0; j--)
+		{
+			_putchar(arr[j] + 48);
+			count++;
+		}
+		count++;
+		_putchar(arr[j] + 48);
+	}
+	return (count);
 }

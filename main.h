@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <limits.h>
+#include <unistd.h>
 
 /**
  * struct specifier - struct specifier
