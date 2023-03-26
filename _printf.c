@@ -8,7 +8,6 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	char c, *s;
 
 	va_start(args, format);
 	while (*format)
@@ -18,12 +17,14 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					c = (char)va_arg(args, int);
+					char c = (char)va_arg(args, int);
+
 					putchar(c);
 					count++;
 					break;
 				case 's':
-					*s = va_arg(args, char*);
+					char *s = va_arg(args, char*);
+
 						putchar(*s);
 						s++;
 						count++;
