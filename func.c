@@ -98,3 +98,32 @@ int print_i(va_list args)
 	return (print_d(args));
 }
 
+/**
+ * print_binary - print binary.
+ * @pp - argument.
+ *
+ * Return: numbers of value
+ */
+int print_binary(va_list pp)
+{
+        unsigned int l;
+        int m, n;
+        int arr [100];
+
+        l = va_arg(pp, int);
+        m = 0;
+        if (l == 0)
+        {
+                _putchar('0');
+                return (1);
+        }
+        while (l > 0)
+        {
+                arr[m] = l % 2;
+                l = l / 2;
+                m++;
+        }
+        for (n = m - 1; n >= 0; n--)
+                _putchar(arr[n] + '0');
+        return (0);
+}
