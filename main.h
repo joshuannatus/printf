@@ -62,6 +62,7 @@ int print_percent(va_list u, flags_t *f);
 /* convert */
 char *convert(unsigned long int num, int base, int letters);
 int print_S(va_list u, flags_t *f);
+int print_p(va_list u, flags_t *f);
 
 /* FLAGS */
 int (*get_print(char s))(va_list, flags_t *);
