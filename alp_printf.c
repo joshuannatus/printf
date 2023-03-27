@@ -68,7 +68,7 @@ int print_S(va_list u, flags_t *f)
 	if (!s)
 		return (_puts("(null)"));
 
-	for (m = 0; s[m]; i++)
+	for (m = 0; s[m]; m++)
 	{
 		if (s[m] > 0 && (s[m] < 32 || s[m] >= 127))
 		{
