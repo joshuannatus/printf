@@ -58,28 +58,29 @@ int print_char(va_list u, flags_t *f)
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_S(va_list  u, flags_t *f)
+int print_S(va_list u, flags_t *f)
 {
 	int m, count = 0;
 	char *ops;
-	char *s  = va_arg(u,  char *);
-	(void)f;
+	char *s = va_arg(u, char *);
 
+	(void)f;
 	if (!s)
 		return (_puts("(null)"));
-	for (m = 0; s[m]; m++)
+
+	for (m = 0; s[m]; i++)
 	{
-		if (s[m] > 0 && (s[m] >= 127))
+		if (s[m] > 0 && (s[m] < 32 || s[m] >= 127))
 		{
-			  _puts("\\x");
-			  count += 2;
-			  ops = convert(s[m], 16, 0);
-			  if (!ops[1])
-				  count += _putchar('0');
-			  count += _puts(ops);
+			_puts("\\x");
+			count += 2;
+			ops = convert(s[m], 16, 0);
+			if (!ops[1])
+				count += _putchar('0');
+			count += _puts(ops);
 		}
 		else
-			count += _putchar(s[i]);
+			count += _putchar(s[m]);
 	}
-	return (count);
+	return (count);
 }
