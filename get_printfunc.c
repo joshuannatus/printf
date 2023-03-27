@@ -21,7 +21,7 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'b', print_binary},
 		{'%', print_percent},
 	};
-	int flags = 10;
+	int flags = 11;
 
 	register int i;
 
