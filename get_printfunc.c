@@ -15,11 +15,13 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'c', print_char},
 		{'d', print_int},
 		{'u', print_unsigned},
+		{'o', print_octal},
 		{'x', print_hex},
+		{'X', print_hex_big},
 		{'b', print_binary},
 		{'%', print_percent},
 	};
-	int flags = 8;
+	int flags = 10;
 
 	register int i;
 

@@ -23,22 +23,6 @@ int print_int(va_list u, flags_t *f)
 }
 
 /**
- * print_unsigned - prints an unsigned integer
- * @u: arguments.
- * @f: pointer
- *
- * Return: number of char printed
- */
-int print_unsigned(va_list u, flags_t *f)
-{
-	unsigned int m = va_arg(u, unsigned int);
-	char *str = convert(m, 10, 0);
-
-	(void)f;
-	return (_puts(str));
-}
-
-/**
  * print_number - helper funtion.
  * @n: integer to be printed
  */
@@ -80,4 +64,20 @@ int count_digit(int i)
 		d++;
 	}
 	return (d);
+}
+
+/**
+ * print_binary - prints number in base 2
+ * @u: arguments.
+ * @f: pointer.
+ *
+ * Return: the number of char.
+ */
+int print_binary(va_list u, flags_t *f)
+{
+	unsigned int num = va_arg(u, unsigned int);
+	char *str = convert(num, 2, 0);
+
+	(void)f;
+	return (_puts(str));
 }

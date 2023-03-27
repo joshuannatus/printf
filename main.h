@@ -42,13 +42,11 @@ int (*get_print(char s))(va_list, flags_t *);
 int _putchar(char c);
 int _puts(char *str);
 
-/* Print Number */
+/* Print Number and base */
 int print_int(va_list u, flags_t *f);
 void print_number(int n);
 int print_unsigned(va_list u, flags_t *f);
 int count_digit(int i);
-
-/* Print Binary */
 int print_hex(va_list u, flags_t *f);
 int print_hex_big(va_list u, flags_t *f);
 int print_binary(va_list u, flags_t *f);
