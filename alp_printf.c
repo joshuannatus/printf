@@ -46,3 +46,40 @@ int print_char(va_list u, flags_t *f)
 	_putchar(va_arg(u, int));
 	return (1);
 }
+
+
+/**
+ * print_S - Non printable characters
+ * (0 < ASCII value < 32 or >= 127) are
+ * printed this way: \x, followed by the ASCII code
+ * value in hexadecimal (upper case - always 2 characters)
+ * @u: va_list arguments from _printf
+ * @f: pointer to the struct flags that determines
+ * if a flag is passed to _printf
+ * Return: number of char printed
+ */
+Int print_S ( va_list  u, flag_t *f)
+   {
+       Int m, count = 0; 
+       char *ops;
+       char *s  = va_arg(u,  char *);
+       (void)f;
+        If (!s)
+              return (_puts("(null)"));
+          
+           For (m = 0; s[m]; m++)
+            { 
+                If (s[m] > 0 && (s[m] >= 127))
+                  {
+                      _puts("\\x");
+                       count += 2;
+                       ops = convert(s[m], 16, 0);
+                        if (!ops[1])
+                               count += _putchar('0');
+                         count += _puts(ops);
+                        }
+                        else
+                                  count += _putchar(s[i]);
+                   }
+                   return (count);
+}
