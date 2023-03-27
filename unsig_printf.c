@@ -9,17 +9,11 @@
  */
 int print_unsigned(va_list u, flags_t *f)
 {
-	unsigned int num = va_arg(u, unsigned int);
-	char *str = convert(num, 10, 0);
-	int count = 0;
+	unsigned int m = va_arg(u, unsigned int);
+	char *str = convert(m, 10, 0);
 
-	if (f->plus == 1 && (int)num >= 0)
-		count += _putchar('+');
-	else if (f->space == 1 && (int)num >= 0)
-		count += _putchar(' ');
-
-	count += _puts(str);
-	return (count);
+	(void)f;
+	return (_puts(str));
 }
 
 /**
