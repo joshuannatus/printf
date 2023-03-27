@@ -19,7 +19,7 @@ int print_unsigned(va_list u, flags_t *f)
 		count += _putchar(' ');
 
 	count += _puts(str);
-	return count;
+	return (count);
 }
 
 /**
@@ -40,7 +40,7 @@ int print_octal(va_list u, flags_t *f)
 		count += _putchar('0');
 
 	count += _puts(str);
-	return count;
+	return (count);
 }
 
 /**
