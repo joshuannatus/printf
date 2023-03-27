@@ -22,5 +22,5 @@ int (*get_func(char x))(va_list)
 			return (arr[i].f);
 		i++;
 	}
-	return (NULL);
+	return (NULL)
 }
