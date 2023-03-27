@@ -103,7 +103,7 @@ int print_p(va_list u, flags_t *f)
 	(void)f;
 
 	if (!p)
-		return (_puts("(nul)"));
+		return (_puts("(null)"));
 	string = convert(p, 16, 1);
 	count += _puts("0x");
 	count += _puts(string);
