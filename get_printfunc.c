@@ -20,8 +20,9 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'X', print_hex_big},
 		{'b', print_binary},
 		{'%', print_percent},
+		{'S', print_S},
 	};
-	int flags = 10;
+	int flags = 11;
 
 	register int i;
 
