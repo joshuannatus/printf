@@ -84,3 +84,28 @@ int print_S(va_list u, flags_t *f)
 	}
 	return (count);
 }
+
+
+/**
+ * print_p - prints (p) which is address of input
+ * @u: va_list arguments from _printf
+ * @f: pointer to the struct flags that determines
+ * if a flag is passed to _printf
+ * Return: number of char printed
+ */
+int print_p(va_list u, flags_t *f)
+{
+	char *string;
+	unsigned long int p = va_arg(u, unsigned long int);
+
+	register int count = 0;
+
+	(void)f;
+
+	if (!p)
+		return (_puts("(nul)"));
+	string = convert(p, 16, 1);
+	count += _puts("0x");
+	count += _puts(string);
+	return (count);
+}
