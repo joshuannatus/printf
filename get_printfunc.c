@@ -23,7 +23,7 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'S', print_S},
 		{'p', print_p},
 	};
-	int flags = 12;
+	int flags = 14;
 
 	register int i;
 
