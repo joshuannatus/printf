@@ -13,6 +13,7 @@ int print_percent(va_list u, flags_t *f)
 	(void)f;
 	return (_putchar('%'));
 }
+
 /**
  * print_string - strings.
  * @u: argument.
