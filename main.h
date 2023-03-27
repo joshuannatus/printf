@@ -54,6 +54,10 @@ int print_hex_big(va_list u, flags_t *f);
 int print_binary(va_list u, flags_t *f);
 int print_octal(va_list u, flags_t *f);
 
+/* Strings/Character */
+int print_string(va_list u, flags_t *f);
+int print_char(va_list u, flags_t *f);
+
 /* Print percentage */
 int print_percent(va_list u, flags_t *f);
 
