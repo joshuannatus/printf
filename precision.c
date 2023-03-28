@@ -33,6 +33,7 @@ int get_precision(const char *format, int i, va_list list)
 		if (format[j] == 'd' || format[j] == 'i')
 		{
 			int arg = va_arg(list, int);
+
 			if (precision == -1)
 			{
 				precision = 1;
@@ -45,5 +46,5 @@ int get_precision(const char *format, int i, va_list list)
 			break;
 		}
 	}
-	return precision;
+	return (precision);
 }
