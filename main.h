@@ -71,4 +71,7 @@ int print_r(va_list u, flags_t *f);
 int (*get_print(char s))(va_list, flags_t *);
 int get_flag(char s, flags_t *f);
 
+/* precision */
+int get_precision(const char *format, int i, va_list list);
+
 #endif
