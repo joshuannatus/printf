@@ -67,24 +67,11 @@ int print_p(va_list u, flags_t *f);
 int (*get_print(char s))(va_list, flags_t *);
 int get_flag(char s, flags_t *f);
 
-#define GET_INT_ARG(args, flags) \
-    (flags->length == LENGTH_LONG_LONG ? va_arg(args, long long) \
-        : flags->length == LENGTH_LONG ? va_arg(args, long) \
-        : flags->length == LENGTH_SHORT ? (short)va_arg(args, int) \
-        : flags->length == LENGTH_CHAR ? (char)va_arg(args, int) \
-        : va_arg(args, int))
-
-#define GET_UNSIGNED_ARG(args, flags) \
-    (flags->length == LENGTH_LONG_LONG ? va_arg(args, unsigned long long) \
-        : flags->length == LENGTH_LONG ? va_arg(args, unsigned long) \
-        : flags->length == LENGTH_SHORT ? (unsigned short)va_arg(args, unsigned int) \
-        : flags->length == LENGTH_CHAR ? (unsigned char)va_arg(args, unsigned int) \
-        : va_arg(args, unsigned int))
-
-
-
-
-
+int print_int(va_list args, flags_t *flags);
+int print_unsigned(va_list args, flags_t *flags);
+int print_octal(va_list args, flags_t *flags);
+int print_hex(va_list args, flags_t *flags);
+int print_hex_big(va_list args, flags_t *flags);
 
 
 #endif
