@@ -69,11 +69,4 @@ int print_r(va_list u, flags_t *f);
 int (*get_print(char s))(va_list, flags_t *);
 int get_flag(char s, flags_t *f);
 
-int print_int(va_list args, flags_t *flags);
-int print_unsigned(va_list args, flags_t *flags);
-int print_octal(va_list args, flags_t *flags);
-int print_hex(va_list args, flags_t *flags);
-int print_hex_big(va_list args, flags_t *flags);
-
-
 #endif
