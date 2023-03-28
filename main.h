@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 /**
  * struct flags - struct containining flags
@@ -19,7 +20,6 @@ typedef struct flags
 	int space;
 	int hash;
 	int zero;
-	int minus;
 } flags_t;
 
 /**
@@ -56,6 +56,7 @@ int print_octal(va_list u, flags_t *f);
 /* Strings/Character */
 int print_string(va_list u, flags_t *f);
 int print_char(va_list u, flags_t *f);
+int num_digits(int num);
 
 /* Print percentage */
 int print_percent(va_list u, flags_t *f);

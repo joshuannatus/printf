@@ -10,10 +10,10 @@
  */
 int get_precision(const char *format, int i, va_list list)
 {
-	int precision = -1;
+	int j, precision = -1;
 	bool minus_flag = false;
 
-	for (int j = i + 1; format[j] != '\0'; j++)
+	for (j = i + 1; format[j] != '\0'; j++)
 	{
 		if (format[j] == '.')
 		{
