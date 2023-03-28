@@ -7,8 +7,7 @@
 #include <unistd.h>
 
 /**
- * struct flags - struct containing flags to "turn on"
- * when a flag specifier is passed to _printf()
+ * struct flags - struct containining flags
  * @plus: flag for the '+' character
  * @space: flag for the ' ' character
  * @hash: flag for the '#' character
@@ -67,4 +66,25 @@ int print_p(va_list u, flags_t *f);
 /* FLAGS */
 int (*get_print(char s))(va_list, flags_t *);
 int get_flag(char s, flags_t *f);
+
+#define GET_INT_ARG(args, flags) \
+    (flags->length == LENGTH_LONG_LONG ? va_arg(args, long long) \
+        : flags->length == LENGTH_LONG ? va_arg(args, long) \
+        : flags->length == LENGTH_SHORT ? (short)va_arg(args, int) \
+        : flags->length == LENGTH_CHAR ? (char)va_arg(args, int) \
+        : va_arg(args, int))
+
+#define GET_UNSIGNED_ARG(args, flags) \
+    (flags->length == LENGTH_LONG_LONG ? va_arg(args, unsigned long long) \
+        : flags->length == LENGTH_LONG ? va_arg(args, unsigned long) \
+        : flags->length == LENGTH_SHORT ? (unsigned short)va_arg(args, unsigned int) \
+        : flags->length == LENGTH_CHAR ? (unsigned char)va_arg(args, unsigned int) \
+        : va_arg(args, unsigned int))
+
+
+
+
+
+
+
 #endif
