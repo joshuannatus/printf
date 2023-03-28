@@ -30,3 +30,28 @@ int print_rot(va_list u, flags_t *f)
 
 	return (b);
 }
+
+/**
+ * print_r - prints a string in reverse
+ * @u: argument from _printf
+ * @f: pointer to the struct flags that determines
+ * if a flag is passed to _printf
+ * Return: length of the printed string
+ */
+int print_r(va_list u, flags_t *f)
+{
+	int a = 0, b;
+	char *s = va_arg(u, char *);
+
+	(void)f;
+	if (!s)
+		s = "(null)";
+
+	while (s[a])
+		a++;
+
+	for (b = a - 1; b >= 0; b--)
+		_putchar(s[b]);
+
+	return (a);
+}
