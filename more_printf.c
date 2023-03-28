@@ -1,35 +1,37 @@
 #include "main.h"
 /**
- * get_precision - Calculates the precision for printing
- * @format: Formatted string in which to print the arguments
- * @m: List of arguments to be printed.
- * @list: list of arguments.
+ * printf_rot - printf str to ROT13 place into buffer
+ * @args: type struct va_arg where is allocated printf arguments
+ * Return: counter
  *
- * Return: Precision.
  */
-int get_prec(const char *format, int *m, va_list list)
+int printf_rot(va_list args)
 {
-	int check_m = *m + 1;
-	int prec = -1;
-	if (format[check_m] != '.')
-		return (prec);
-	precision = 0;
-	for (check_m += 1; format[check_m] != '\0'; check_m++)
+	int m, n, counter = 0;
+	int o = 0;
+	char *s = va_arg(args, char*);
+	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
+
+	if (s == NULL)
+		s = "(null)";
+	for (m = 0; s[m]; m++)
 	{
-		if (is_digit(format[check_m]))
+		o = 0;
+		for (n = 0; alpha[n] && !o; n++)
 		{
-			prec *= 10;
-			prec += format[check_m] - '0';
+			if (s[m] == alpha[n])
+			{
+				_putchar(beta[n]);
+				counter++;
+				o = 1;
+			}
 		}
-		else if (format[check_m] == '*')
+		if (!o)
 		{
-			check_m++;
-			prec = va_arg(list, int);
-			break;
+			_putchar(s[m]);
+			counter++;
 		}
-		else
-			break;
 	}
-	*m = check_m - 1;
-	return (prec);
+	return (counter);
 }
