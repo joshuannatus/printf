@@ -1,11 +1,11 @@
 #include "main.h"
 /**
- * printf_rot - printf str to ROT13 place into buffer
+ * print_rot - print str to ROT13 place into buffer
  * @args: type struct va_arg where is allocated printf arguments
  * Return: counter
  *
  */
-int printf_rot(va_list args)
+int print_rot(va_list args)
 {
 	int m, n, counter = 0;
 	int o = 0;
