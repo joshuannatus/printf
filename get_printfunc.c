@@ -23,8 +23,9 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'S', print_S},
 		{'p', print_p},
 		{'R', print_rot},
+		{'r', print_r},
 	};
-	int flags = 13;
+	int flags = 14;
 
 	register int i;
 
