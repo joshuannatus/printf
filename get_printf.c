@@ -1,51 +1,49 @@
-#include "main.h"
-
+#include "holberton.h"
 /**
- * ev_print_func - returns the amount of identifiers.
- * @s: argument indentifier
- * @index: index of argument identifier.
- * Return: amount of identifiers.
+ * handle_print - Prints an argument based on its type
+ * @fmt: Formatted string in which to print the arguments
+ * @list: List of arguments to be printed
+ * @ind: ind.
+ * @buffer: Buffer array to handle print
+ * @flags: Calculates active flags
+ * @width: get width.
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: 1 or 2;
  */
-int ev_print_func(const char *s, int index)
+int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	print_t pr[] = {
-		{"c", print_chr}, {"s", print_str}, {"i", print_int},
-		{"d", print_int}, {"b", print_bnr}, {"u", print_unt},
-		{"o", print_oct}, {"x", print_hex}, {"X", print_upx},
-		{"S", print_usr}, {"p", print_add}, {"li", prinlint},
-		{"ld", prinlint}, {"lu", prinlunt}, {"lo", prinloct},
-		{"lx", prinlhex}, {"lX", prinlupx}, {"hi", prinhint},
-		{"hd", prinhint}, {"hu", prinhunt}, {"ho", prinhoct},
-		{"hx", prinhhex}, {"hX", prinhupx}, {"#o", prinnoct},
-		{"#x", prinnhex}, {"#X", prinnupx}, {"#i", print_int},
-		{"#d", print_int}, {"#u", print_unt}, {"+i", prinpint},
-		{"+d", prinpint}, {"+u", print_unt}, {"+o", print_oct},
-		{"+x", print_hex}, {"+X", print_upx}, {" i", prinsint},
-		{" d", prinsint}, {" u", print_unt}, {" o", print_oct},
-		{" x", print_hex}, {" X", print_upx}, {"R", print_rot},
-		{"r", print_rev}, {"%", print_prg}, {"l", print_prg},
-		{"h", print_prg}, {" +i", prinpint}, {" +d", prinpint},
-		{"+ i", prinpint}, {"+ d", prinpint}, {" %", print_prg},
-		{NULL, NULL},
+	int i, unknow_len = 0, printed_chars = -1;
+	fmt_t fmt_types[] = {
+		{'c', print_char}, {'s', print_string}, {'%', print_percent},
+		{'i', print_int}, {'d', print_int}, {'b', print_binary},
+		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
+		{'X', print_hexa_upper}, {'p', print_pointer}, {'S', print_non_printable},
+		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
 	};
-	int i = 0, j = 0, first_index;
+	for (i = 0; fmt_types[i].fmt != '\0'; i++)
+		if (fmt[*ind] == fmt_types[i].fmt)
+			return (fmt_types[i].fn(list, buffer, flags, width, precision, size));
 
-	first_index = index;
-	while (pr[i].type_arg)
+	if (fmt_types[i].fmt == '\0')
 	{
-		if (s[index] == pr[i].type_arg[j])
+		if (fmt[*ind] == '\0')
+			return (-1);
+		unknow_len += write(1, "%%", 1);
+		if (fmt[*ind - 1] == ' ')
+			unknow_len += write(1, " ", 1);
+		else if (width)
 		{
-			if (pr[i].type_arg[j + 1] != '\0')
-				index++, j++;
-			else
-				break;
+			--(*ind);
+			while (fmt[*ind] != ' ' && fmt[*ind] != '%')
+				--(*ind);
+			if (fmt[*ind] == ' ')
+				--(*ind);
+			return (1);
 		}
-		else
-		{
-			j = 0;
-			i++;
-			index = first_index;
-		}
+		unknow_len += write(1, &fmt[*ind], 1);
+		return (unknow_len);
 	}
-	return (j);
+	return (printed_chars);
 }
