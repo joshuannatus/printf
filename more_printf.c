@@ -55,20 +55,3 @@ int print_r(va_list u, flags_t *f)
 
 	return (a);
 }
-/**
- * num_digits - Verifies if a char is a digit
- * @num: Char to be evaluated
- *
- * Return: 1 if c is a digit, 0 otherwise
- */
-
-int num_digits(int num)
-{
-	int count = 0;
-	while (num != 0)
-	{
-		num /= 10;
-		count++;
-	}
-	return (count);
-}

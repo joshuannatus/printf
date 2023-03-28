@@ -56,7 +56,6 @@ int print_octal(va_list u, flags_t *f);
 /* Strings/Character */
 int print_string(va_list u, flags_t *f);
 int print_char(va_list u, flags_t *f);
-int num_digits(int num);
 
 /* Print percentage */
 int print_percent(va_list u, flags_t *f);
