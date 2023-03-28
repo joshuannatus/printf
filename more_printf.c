@@ -1,37 +1,32 @@
 #include "main.h"
 /**
- * print_rot - print str to ROT13 place into buffer
- * @args: type struct va_arg where is allocated printf arguments
- * Return: counter
- *
+ * print_rot13 - prints a string using rot13
+ * @l: list of arguments from _printf
+ * @f: pointer to the struct flags that determines
+ * if a flag is passed to _printf
+ * Return: length of the printed string
  */
-int print_rot(va_list args)
+int print_rot(va_list u, flags_t *f)
 {
-	int m, n, counter = 0;
-	int o = 0;
-	char *s = va_arg(args, char*);
-	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
-	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
+	int a, b;
+	char alpha[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *s = va_arg(u, char *);
 
-	if (s == NULL)
-		s = "(null)";
-	for (m = 0; s[m]; m++)
+	(void)f;
+	for (b = 0; s[b]; b++)
 	{
-		o = 0;
-		for (n = 0; alpha[n] && !o; n++)
+		if (s[b] < 'A' || (s[b] > 'Z' && s[b] < 'a') || s[b] > 'z')
+			_putchar(s[b]);
+		else
 		{
-			if (s[m] == alpha[n])
+			for (a = 0; a <= 52; a++)
 			{
-				_putchar(beta[n]);
-				counter++;
-				o = 1;
+				if (s[b] == alpha[a])
+					_putchar(rot13[a]);
 			}
 		}
-		if (!o)
-		{
-			_putchar(s[m]);
-			counter++;
-		}
 	}
-	return (counter);
+
+	return (b);
 }
